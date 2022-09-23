@@ -47,12 +47,14 @@ h1 {
   display: block;
 }
 
-#navlinks a {
+#navlinks p {
   padding: 5px 90px 5px 20px;
   color: #a3acb9;
   border-top-right-radius: 6px;
   border-bottom-right-radius: 6px;
   display: inline-block;
+  margin: 0;
+  cursor: pointer;
 }
 
 a {
