@@ -89,18 +89,25 @@ p a:hover {
   width: fit-content;
   height: fit-content;
   margin: auto;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 .snippet h1 {
-  font-size: 24px;
+  font-size: 16px;
   font-weight: 700;
-  line-height: 26.4px;
+  padding: 15px 15px 12px;
+  color: #c1c9d2;
+  background-color: #4f566b;
+  margin: 0;
 }
 
 .snippet p {
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 20px;
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  line-height: 20px !important;
+  margin: 12px 15px 15px;
+  color: white !important;
 }
 
 .docs-section {
