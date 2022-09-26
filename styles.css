@@ -24,7 +24,7 @@ aside {
 }
 
 #docs {
-  padding: 50px 0 0 10px;
+  padding: 50px 0 0;
 }
 
 nav {
@@ -39,6 +39,11 @@ nav a {
 
 h1 {
   font-size: 24px;
+  font-weight: 500;
+}
+
+h2 {
+  font-size: 18px;
   font-weight: 500;
 }
 
@@ -74,7 +79,19 @@ p a:hover {
   color: white;
 }
 
-#docs p {
+.snippet p {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  color: white;
+  margin: 0;
+}
+
+.codebox {
+  margin: 12px 15px 15px;
+}
+
+.docs-text-section p {
   font-size: 16px;
   line-height: 26px;
   color: #c1c9d2;
@@ -91,6 +108,7 @@ p a:hover {
   margin: auto;
   border-radius: 10px;
   overflow: hidden;
+  max-width: 85%;
 }
 
 .snippet h1 {
@@ -102,18 +120,25 @@ p a:hover {
   margin: 0;
 }
 
-.snippet p {
-  font-size: 16px !important;
-  font-weight: 400 !important;
-  line-height: 20px !important;
-  margin: 12px 15px 15px;
-  color: white !important;
-}
-
 .docs-section {
   display: flex;
+  box-shadow: 0 -1px 0 #3c4257 inset;
+  padding-left: 10px;
 }
 
 .docs-text-section {
   width: 50%;
+}
+
+.req-method {
+  color: #6c8eef !important;
+}
+
+.inline-codebox {
+  display: flex;
+}
+
+.code-area {
+  display: flex;
+  flex-direction: column;
 }

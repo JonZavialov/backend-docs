@@ -23,10 +23,7 @@
       <!-- search bar -->
       <div id="navlinks">
         <p redirect="intro">Introduction</p>
-        <p redirect="test1">Test1</p>
-        <p redirect="test2">Test2</p>
-        <p redirect="test3">Test3</p>
-        <p redirect="test4">Test4</p>
+        <p redirect="analytics">Analytics</p>
       </div>
     </aside>
     <section id="main">
@@ -52,7 +49,60 @@
           </div>
           <div class="snippet">
             <h1>BASE URL</h1>
-            <p>https://api.jonzav.me/v1</p>
+            <div class="codebox">
+              <p>https://api.jonzav.me/v1</p>
+            </div>
+          </div>
+        </div>
+        <div id="analytics" class="docs-section">
+          <div class="docs-text-section">
+            <h1>Analytics</h1>
+            <p>
+              For anyone other than me, the most useful feature of my API is the
+              analytics. It collects and returns information about the visitors
+              of my site. I try to collect as little information as possible,
+              but enough to get some usefull information about my site's
+              performance and demographics.
+            </p>
+            <h2>Add a new user</h2>
+            <p>
+              When a new user visits the site for the first time, the first step
+              is giving them a unique user ID. This is in the form of a UUID.
+              The new user is posted to the backend. The UUID has to be in valid
+              UUID format. If it is unique and not already present, the UUID is
+              added to the database.
+            </p>
+          </div>
+          <div class="code-area">
+            <div class="snippet">
+              <h1>ENDPOINTS</h1>
+              <div class="codebox">
+                <div class="inline-codebox">
+                  <p class="req-method">POST</p>
+                  <p>&nbsp;/analytics/newuser</p>
+                </div>
+                <p>Body:</p>
+                <p>
+                  &nbsp;{ <br />
+                  &nbsp;&nbsp;"uuid": "&lt;uuid&gt;" <br />
+                  &nbsp;}
+                </p>
+              </div>
+            </div>
+            <div class="snippet">
+              <h1>SAMPLE RESPONSE</h1>
+              <div class="codebox">
+                <p>
+                  &nbsp;{ <br />
+                  &nbsp;&nbsp;"message": "The user has been successfully
+                  created",
+                  <br />
+                  &nbsp;&nbsp;"uuid": "&lt;uuid&gt;"
+                  <br />
+                  &nbsp; }
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
