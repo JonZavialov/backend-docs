@@ -65,3 +65,39 @@ a {
   background-color: #2a2f45;
   color: #6c8eef !important;
 }
+
+p a {
+  color: #6c8eef;
+}
+
+p a:hover {
+  color: white;
+}
+
+#docs p {
+  font-size: 16px;
+  line-height: 26px;
+  color: #c1c9d2;
+  font-weight: 400;
+  width: 50%;
+}
+
+.snippet {
+  font-family: Consolas, monaco, monospace;
+  font-style: normal;
+  font-variant: normal;
+  background-color: #3c4257;
+  width: fit-content;
+}
+
+.snippet h1 {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 26.4px;
+}
+
+.snippet p {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+}
