@@ -1,4 +1,6 @@
 function addEvents(){
+    //TODO: Make the intro link only highlighted if there is no URL param
+    
     $("#navlinks p").each((_i, item) => {
         $(item).width($("aside").width() - 50 + "px");
         $(item).on("mousedown", () => selectNavLink($(item)));
