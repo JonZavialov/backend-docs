@@ -2,7 +2,7 @@ function addEvents(){
     if (window.location.hash === '') selectNavLink($("#navlinks p")[0]);
 
     $("#navlinks p").each((_i, item) => {
-        $(item).width($("aside").width() - 50 + "px");
+        $(item).width($("body").width() * 0.18 - 50 + "px");
         $(item).on("mousedown", () => selectNavLink(item));
         $(item).on("mouseup", () => window.location.replace("/#" + $(item).attr("redirect")));
     });
