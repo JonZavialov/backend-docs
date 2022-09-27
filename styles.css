@@ -5,22 +5,19 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
     "Helvetica Neue", "Ubuntu";
   font-weight: 500;
+  display: flex;
 }
 
 aside {
   box-shadow: -1px 0 0 0 #3c4257 inset;
   width: 18%;
-  height: 100%;
-  position: absolute;
+  top: 0;
+  bottom: 0;
 }
 
 #logo {
   width: -webkit-fill-available;
   padding: 15px;
-}
-
-#main {
-  margin-left: 18%;
 }
 
 #docs {
