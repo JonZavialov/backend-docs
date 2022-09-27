@@ -46,7 +46,8 @@ h2 {
 
 #navlinks {
   width: 100%;
-  display: block;
+  display: flex;
+  flex-direction: column;
 }
 
 #navlinks p {
