@@ -24,6 +24,11 @@
       <div id="navlinks">
         <p redirect="intro">Introduction</p>
         <p redirect="analytics">Analytics</p>
+        <p redirect="chat-room">Chat Room</p>
+        <p redirect="oauth">GitHub OAuth</p>
+        <p redirect="github">GitHub User Data</p>
+        <p redirect="national-days">National Days</p>
+        <!-- TODO: Make this float while the user scrolls -->
       </div>
     </aside>
     <section id="main">
@@ -72,10 +77,37 @@
               UUID format. If it is unique and not already present, the UUID is
               added to the database.
             </p>
+            <h2>Add a visit for an existing user</h2>
+            <p>
+              When an existing user visits the site again, this is logged in the
+              database. This is acheived through the /addvisit endpoint. The
+              UUID must be in valid UUID format, and must already exist in the
+              database.
+            </p>
+            <h2>Get all site visitors</h2>
+            <p>
+              In order to get an object which lists all website visitors' UUIDs
+              as well as how many times they visited the page, we use the
+              /analytics endpoint.
+              <br />
+              <a href="https://api.jonzav.me/v1/analytics">View endpoint</a>
+            </p>
+            <h2>Get more details about website analytics</h2>
+            <p>
+              To get some more information about the website's analytics, we can
+              use the /info enpoint. This will return an object with some more
+              information, including the date of the last unique visitor and
+              their IP. Other than the most recent visitor's, no other IPs are
+              stored.
+              <br />
+              <a href="https://api.jonzav.me/v1/analytics/info">
+                View endpoint
+              </a>
+            </p>
           </div>
           <div class="code-area">
             <div class="snippet">
-              <h1>ENDPOINTS</h1>
+              <h1>ENDPOINT</h1>
               <div class="codebox">
                 <div class="inline-codebox">
                   <p class="req-method">POST</p>
@@ -90,18 +122,205 @@
               </div>
             </div>
             <div class="snippet">
-              <h1>SAMPLE RESPONSE</h1>
+              <h1>ENDPOINT</h1>
               <div class="codebox">
+                <div class="inline-codebox">
+                  <p class="req-method">POST</p>
+                  <p>&nbsp;/analytics/addvisit</p>
+                </div>
+                <p>Body:</p>
                 <p>
                   &nbsp;{ <br />
-                  &nbsp;&nbsp;"message": "The user has been successfully
-                  created",
-                  <br />
-                  &nbsp;&nbsp;"uuid": "&lt;uuid&gt;"
-                  <br />
-                  &nbsp; }
+                  &nbsp;&nbsp;"uuid": "&lt;uuid&gt;" <br />
+                  &nbsp;}
                 </p>
               </div>
+            </div>
+            <div class="snippet">
+              <h1>ENDPOINT</h1>
+              <div class="codebox">
+                <div class="inline-codebox">
+                  <p class="req-method">GET</p>
+                  <p>&nbsp;/analytics</p>
+                </div>
+              </div>
+            </div>
+            <div class="snippet">
+              <h1>ENDPOINT</h1>
+              <div class="codebox">
+                <div class="inline-codebox">
+                  <p class="req-method">GET</p>
+                  <p>&nbsp;/analytics/info</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="chat-room" class="docs-section">
+          <div class="docs-text-section">
+            <h1>Chat Room</h1>
+            <p>
+              My portfolio website also has a functional chat room, powered by
+              this API. You can view and use it
+              <a href="https://jonzav.me/?booted=true&app=chatRoom">here</a>.
+              You will need a GitHub account to post a message.
+            </p>
+            <p>
+              To authenticate users in the chat room, as well as prevent some
+              security vulnerabilities, the chat room uses GitHub OAuth through
+              this API. More can be read about it in the
+              <a href="/#oauth">GitHub OAuth</a> section.
+            </p>
+            <h2>Get all comments</h2>
+            <p>
+              To retrieve an object of all comments, including their content,
+              the date it was posted, the author, and the authors profile
+              picture, we send a request to the /comments endpoint.
+              <br />
+              <a href="https://api.jonzav.me/v1/comments">View endpoint</a>
+            </p>
+            <h2>Post a comment</h2>
+            <p>
+              To post a comment, we send a POST request to the same endpoint
+              above. To succesfully post, the request needs to contain the
+              content, and GitHub user token. The request must have content that
+              is less than 300 characters in length, must contain a valid GitHub
+              OAuth token, and must be out of the cooldown period of 10 seconds.
+            </p>
+          </div>
+          <div class="code-area">
+            <div class="snippet">
+              <h1>ENDPOINT</h1>
+              <div class="codebox">
+                <div class="inline-codebox">
+                  <p class="req-method">GET</p>
+                  <p>&nbsp;/comments</p>
+                </div>
+              </div>
+            </div>
+            <div class="snippet">
+              <h1>ENDPOINT</h1>
+              <div class="codebox">
+                <div class="inline-codebox">
+                  <p class="req-method">POST</p>
+                  <p>&nbsp;/comments</p>
+                </div>
+                <p>Body:</p>
+                <p>
+                  &nbsp;{ <br />
+                  &nbsp;&nbsp;"content": "&lt;comment content&gt;" <br />
+                  &nbsp;&nbsp;"token": "&lt;GitHub OAuth token&gt;" <br />
+                  &nbsp;}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="oauth" class="docs-section">
+          <div class="docs-text-section">
+            <h1>GitHub OAuth</h1>
+            <p>
+              To prevent spam in the chat room, we have an account system. This
+              also prevents an attacker from impersonating someone and making
+              comments under their identity. While I could've made my own user
+              accounts system, it would have had security vulnerabilities and
+              would not have been as elegant as authenticating through GitHub.
+              More information about GitHub OAuth can be found
+              <a
+                href="https://docs.github.com/en/developers/apps/building-oauth-apps"
+              >
+                here</a
+              >.
+            </p>
+            <h2>Authenticate user</h2>
+            <p>
+              In order to authenticate the user, we first have to retrieve the
+              GitHub OAuth code. This is done through logging in with GitHub. It
+              is completely secure. My implementation of this can be seen in the
+              code for my website
+              <a
+                href="https://github.com/JonZavialov/portfolio4/blob/main/project/src/windows/ChatRoom.js"
+                >here</a
+              >.
+            </p>
+            <p>
+              We then send the request to my backend, which uses the OAuth code
+              from the login to authenticate the user. It returns an access
+              token, which we can use to validate the user's identity and post
+              comments.
+            </p>
+          </div>
+          <div class="snippet">
+            <h1>ENDPOINT</h1>
+            <div class="codebox">
+              <div class="inline-codebox">
+                <p class="req-method">POST</p>
+                <p>&nbsp;/oauth</p>
+              </div>
+              <p>Body:</p>
+              <p>
+                &nbsp;{ <br />
+                &nbsp;&nbsp;"code": "&lt;GitHub OAuth code&gt;" <br />
+                &nbsp;}
+              </p>
+            </div>
+          </div>
+        </div>
+        <div id="github" class="docs-section">
+          <div class="docs-text-section">
+            <h1>GitHub User Data</h1>
+            <p>
+              My website uses this endpoint with the chat room to get user data
+              from the token once the user has logged in.
+            </p>
+            <h2>Retrieving the data</h2>
+            <p>
+              To retrieve the data, a request has to be sent to the endpoint.
+              The GitHub user token must be provided in the URL parameters. It
+              is important to note that this should be provided within the URL,
+              and not the body of the request. This will return the username and
+              avatar URL that corresponds with the token.
+            </p>
+          </div>
+          <div class="snippet">
+            <h1>ENDPOINT</h1>
+            <div class="codebox">
+              <div class="inline-codebox">
+                <p class="req-method">GET</p>
+                <p>&nbsp;/github/getUserData</p>
+              </div>
+              <p>URL parameters:</p>
+              <p>token=&lt;GitHub user token&gt;</p>
+            </div>
+          </div>
+        </div>
+        <div id="national-days" class="docs-section">
+          <div class="docs-text-section">
+            <h1>National Days</h1>
+            <p>
+              My website uses this endpoint with the calendar app to get
+              national holiday information for every day. This app can be viewed
+              <a href="https://jonzav.me/?booted=true&app=calendar">here</a>.
+            </p>
+            <h2>Retrieving the data</h2>
+            <p>
+              To retrieve the data, a request has to be sent to the endpoint.
+              The month and day must be provided within the URL parameters. It
+              is important to note that this should be provided within the URL,
+              and not the body of the request. This will return a list of all
+              the holidays on that date.
+            </p>
+          </div>
+          <div class="snippet">
+            <h1>ENDPOINT</h1>
+            <div class="codebox">
+              <div class="inline-codebox">
+                <p class="req-method">GET</p>
+                <p>&nbsp;/national-days</p>
+              </div>
+              <p>URL parameters:</p>
+              <p>month=&lt;Month&gt;</p>
+              <p>day=&lt;Day&gt;</p>
             </div>
           </div>
         </div>

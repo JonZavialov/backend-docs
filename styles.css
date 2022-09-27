@@ -77,7 +77,7 @@ p a:hover {
 }
 
 .snippet p {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 400;
   line-height: 20px;
   color: white;
@@ -109,7 +109,7 @@ p a:hover {
 }
 
 .snippet h1 {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 700;
   padding: 15px 15px 12px;
   color: #c1c9d2;
@@ -138,4 +138,5 @@ p a:hover {
 .code-area {
   display: flex;
   flex-direction: column;
+  width: 50%;
 }
