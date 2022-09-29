@@ -13,6 +13,7 @@ aside {
   width: 18%;
   top: 0;
   bottom: 0;
+  position: fixed;
 }
 
 #logo {
@@ -139,4 +140,8 @@ p a:hover {
   display: flex;
   flex-direction: column;
   width: 50%;
+}
+
+#main {
+  margin-left: 18%;
 }
