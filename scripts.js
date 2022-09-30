@@ -20,6 +20,39 @@ function selectNavLink(navLink){
 function setMobileMode() {
     const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
     if (vw < 870){
-        console.log("true")
+        changeToMobileCSS()
     }
+}
+
+function changeToMobileCSS() {
+    $('aside').hide()
+
+    $('#main').css({
+        'margin-left': 0,
+        'display': 'flex',
+        'flex-direction': 'column'
+    })
+
+    $('nav').css({
+        'padding-right': 0,
+        'margin': 'auto'
+    })
+
+    $('nav a:contains("Website")').css('margin-left', 0)
+
+    $('.docs-section').each((_i, item) => {
+        $(item).css('flex-direction', 'column')
+    })
+
+    $('.docs-text-section').each((_i, item) => {
+        $(item).css('width', '95%')
+    })
+
+    $('.code-area').each((_i, item) => {
+        $(item).css('margin', 'auto')
+    })
+
+    $('.snippet').each((_i, item) => {
+        $(item).css('margin', '15px auto')
+    })
 }
