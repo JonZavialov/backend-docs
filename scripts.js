@@ -16,3 +16,10 @@ function selectNavLink(navLink){
         $(item).removeClass("selected");
     });
 }
+
+function setMobileMode() {
+    const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
+    if (vw < 870){
+        console.log("true")
+    }
+}

@@ -5,6 +5,10 @@
     <link rel="icon" href="./favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
     <link rel="stylesheet" type="text/css" href="./styles.css" />
     <title>JonZav API</title>
 
@@ -20,7 +24,10 @@
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <aside>
       <img id="logo" src="./assets/full-logo.png" />
-      <!-- search bar -->
+      <form action="">
+        <input type="search" placeholder="Search here ..." />
+        <i class="fa fa-search"></i>
+      </form>
       <div id="navlinks">
         <p redirect="intro">Introduction</p>
         <p redirect="analytics">Analytics</p>
@@ -28,7 +35,6 @@
         <p redirect="oauth">GitHub OAuth</p>
         <p redirect="github">GitHub User Data</p>
         <p redirect="national-days">National Days</p>
-        <!-- TODO: Make this float while the user scrolls -->
       </div>
     </aside>
     <section id="main">
