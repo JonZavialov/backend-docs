@@ -55,4 +55,8 @@ function changeToMobileCSS() {
     $('.snippet').each((_i, item) => {
         $(item).css('margin', '15px auto')
     })
+
+    $('.codebox').each((_i, item) => {
+        $(item).css('overflow-x', 'scroll')
+    })
 }
