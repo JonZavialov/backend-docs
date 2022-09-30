@@ -53,9 +53,6 @@ function changeToMobileCSS() {
     })
 
     $('.snippet').each((_i, item) => {
-        $(item).css({
-            'margin': '15px auto',
-            'overflow-x': 'scroll'
-        })
+        $(item).css('margin', '15px auto')
     })
 }
