@@ -24,6 +24,34 @@ function setMobileMode() {
     }
 }
 
+function setScrollers(){
+    $(document).scroll(async () => {
+        let min = 10000
+        let currentItem, previous
+        $('.docs-section').each((_i, item) => {
+            let yVal = item.getBoundingClientRect().y
+            if (yVal > 0 && yVal < min) {
+                min = yVal
+                currentItem = previous
+            }
+            previous = item
+        })
+
+        let navLink = await getNavLinkFromSection(currentItem)
+        if(navLink && !$(navLink).hasClass('selected')) {
+            selectNavLink(navLink)
+        }
+    })
+}
+
+function getNavLinkFromSection(header){
+    return new Promise((resolve) => {
+        $("#navlinks p").each((_i, item) => {
+            if ($(item).attr("redirect") == $(header).attr('id')) resolve(item)
+        })
+    })
+}
+
 function changeToMobileCSS() {
     $('aside').hide()
 
