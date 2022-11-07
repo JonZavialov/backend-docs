@@ -3,7 +3,6 @@ function addEvents(){
 
     $("#navlinks p").each((_i, item) => {
         $(item).width($("body").width() * 0.18 - 50 + "px");
-        $(item).on("mousedown", () => selectNavLink(item));
         $(item).on("mouseup", () => window.location.replace("/#" + $(item).attr("redirect")));
     });
 }
