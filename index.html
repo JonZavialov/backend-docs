@@ -27,7 +27,7 @@
         <p redirect="analytics">Analytics</p>
         <p redirect="chat-room">Chat Room</p>
         <p redirect="oauth">GitHub OAuth</p>
-        <p redirect="github">GitHub User Data</p>
+        <p redirect="github">GitHub Data</p>
         <p redirect="national-days">National Days</p>
       </div>
     </aside>
@@ -268,29 +268,52 @@
         </div>
         <div id="github" class="docs-section">
           <div class="docs-text-section">
-            <h1>GitHub User Data</h1>
+            <h1>GitHub Data</h1>
             <p>
               My website uses this endpoint with the chat room to get user data
-              from the token once the user has logged in.
+              from the token once the user has logged in. It has also been
+              adapted to be used to get repo contents.
             </p>
-            <h2>Retrieving the data</h2>
+            <h2>Retrieving user data</h2>
             <p>
-              To retrieve the data, a request has to be sent to the endpoint.
-              The GitHub user token must be provided in the URL parameters. It
-              is important to note that this should be provided within the URL,
-              and not the body of the request. This will return the username and
-              avatar URL that corresponds with the token.
+              To retrieve user data, a request has to be sent to the
+              /getUserData endpoint. The GitHub user token must be provided in
+              the URL parameters. It is important to note that this should be
+              provided within the URL, and not the body of the request. This
+              will return the username and avatar URL that corresponds with the
+              token.
+            </p>
+            <h2>Retrieving repo contents</h2>
+            <p>
+              To retrieve repo contents, a request can be sent to the
+              /repoContents endpoint in a similar fashion. The name of the
+              repository and directory path need to be provided as parameters.
+              This will return the contents of the repo.
             </p>
           </div>
-          <div class="snippet">
-            <h1>ENDPOINT</h1>
-            <div class="codebox">
-              <div class="inline-codebox">
-                <p class="req-method">GET</p>
-                <p>&nbsp;/github/getUserData</p>
+          <div class="code-area">
+            <div class="snippet">
+              <h1>ENDPOINT</h1>
+              <div class="codebox">
+                <div class="inline-codebox">
+                  <p class="req-method">GET</p>
+                  <p>&nbsp;/github/getUserData</p>
+                </div>
+                <p>URL parameters:</p>
+                <p>token=&lt;GitHub user token&gt;</p>
               </div>
-              <p>URL parameters:</p>
-              <p>token=&lt;GitHub user token&gt;</p>
+            </div>
+            <div class="snippet">
+              <h1>ENDPOINT</h1>
+              <div class="codebox">
+                <div class="inline-codebox">
+                  <p class="req-method">GET</p>
+                  <p>&nbsp;/github/repoContents</p>
+                </div>
+                <p>URL parameters:</p>
+                <p>repo=&lt;Repo name&gt;</p>
+                <p>path=&lt;Dir path&gt;</p>
+              </div>
             </div>
           </div>
         </div>
